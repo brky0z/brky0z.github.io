@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Mehmet Berkay Özdemir - Junior Software Developer. C#, .NET, Yapay Zeka (AI), SQL Server ve çok katmanlı kurumsal mimariler üzerine geliştirdiğim projeler.">
+    <meta name="keywords" content="Berkay Özdemir, Software Developer, Junior Developer, C#, .NET, Web Tasarım, Yazılım, Yapay Zeka, Porto Yazılım">
+    <meta name="author" content="Mehmet Berkay Özdemir">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300f2fe%22 font-family=%22monospace%22 font-weight=%22bold%22>{ }</text></svg>">
+
+    <title>Berkay Özdemir | Junior Software Developer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Google Fonts'tan sitemizin modern yazı tipini (Poppins) çekiyoruz */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        /* RENK PALETİMİZ: Buradan rengi değiştirirsen tüm sitede o renk değişir */
+        :root {
+            --bg-color: #0b0c10;      /* Koyu arka plan */
+            --text-color: #ffffff;    /* Ana beyaz metin */
+            --neon-color: #00f2fe;    /* Efsane turkuaz/neon rengimiz */
+            --gray-text: #8892b0;     /* Daha soluk yazılar için gri */
+        }
+
+        /* Tüm elementlerin kenar boşluklarını sıfırlıyoruz ki tasarımımız bozulmasın */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* SAYFA GÖVDESİ */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden; /* Sağa sola kaymayı engeller */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Sayfanın her zaman ekran boyutunu kaplamasını sağlar */
+        }
+
+        /* --- ÜST MENÜ (NAVBAR) --- */
+        header {
+            display: flex; /* Yan yana dizme */
+            justify-content: space-between; /* İki uca yaslama (Logo sola, Menü sağa) */
+            align-items: center;
+            padding: 2rem 5rem;
+            flex-wrap: wrap; /* Mobilde alta geçsin diye */
+            gap: 1rem;
+        }
+
+        /* Logo tasarımı */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Logodaki neon kısım (Özdemir kelimesi) */
+        .logo span {
+            color: var(--neon-color);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5); /* Hafif parlama efekti */
+        }
+
+        /* Menü linklerinin tasarımı */
+        nav ul {
+            display: flex;
+            list-style: none; /* Yanlarındaki noktaları siler */
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none; /* Alt çizgiyi siler */
+            font-size: 1rem;
+            font-weight: 400;
+            transition: 0.3s; /* Üstüne gelince yavaşça değişme efekti */
+            cursor: pointer;
+        }
+
+        /* Menüde üstüne gelinen veya aktif olan sekmenin parlaması */
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--neon-color);
+            text-shadow: 0 0 15px var(--neon-color);
+        }
+
+        /* --- İÇERİK BÖLÜMLERİ (Ana Sayfa, Eğitim vs.) --- */
+        .section {
+            display: none; /* Başlangıçta hepsi gizli, JS ile açıyoruz */
+            padding: 2rem 5rem 4rem 5rem;
+            flex: 1; /* Ortadaki alan boşluğu doldursun diye */
+            animation: fadeIn 0.5s ease-in-out forwards; /* Sayfa açılırkenki yumuşak geçiş */
+        }
+
+        /* Açık olan sayfanın (active) özellikleri */
+        .section.active {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Yumuşak açılış animasyonu (aşağıdan yukarı kayarak gelme) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- SOL TARAF METİNLER (Hakkımda yazısı vs.) --- */
+        .content-left {
+            max-width: 55%;
+        }
+
+        .content-left h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .content-left h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .content-left h2 span {
+            color: var(--neon-color);
+        }
+
+        .content-left p {
+            color: var(--gray-text);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* --- YETENEK ETİKETLERİ (C#, SQL Server yazan kutucuklar) --- */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap; /* Sığmazsa alta geçsin */
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .skill-badge {
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--neon-color);
+            border: 1px solid var(--neon-color);
+            padding: 5px 15px;
+            border-radius: 20px; /* Kenarları yuvarlatma */
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
+        }
+
+        /* --- SOSYAL MEDYA İKONLARI (Instagram, Github vs.) --- */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--neon-color);
+            border-radius: 50%; /* Tam yuvarlak yapar */
+            color: var(--neon-color);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: 0.3s;
+        }
+
+        /* İkonun üstüne gelince içi dolsun ve yukarı zıplasın */
+        .social-icons a:hover {
+            background-color: var(--neon-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px var(--neon-color);
+            transform: translateY(-3px);
+        }
+
+        /* --- BUTONLAR (Bana Ulaş, CV İndir) --- */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* İçi dolu neon buton */
+        .btn-neon {
+            background-color: var(--neon-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+            border: 2px solid var(--neon-color);
+        }
+
+        .btn-neon:hover {
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* İçi boş çerçeveli buton */
+        .btn-outline {
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--neon-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--neon-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* --- SAĞ TARAF (Neon yuvarlak alan) --- */
+        .content-right {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .neon-circle {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 5px solid rgba(0, 242, 254, 0.2);
+            /* Hem dışa hem içe doğru parlama efekti veriyoruz */
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.4), inset 0 0 50px rgba(0, 242, 254, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* İçindeki dev parantez simgesi */
+        .code-visual {
+            font-size: 8rem; 
+            font-weight: 700;
+            color: var(--neon-color);
+            text-shadow: 0 0 20px var(--neon-color);
+            font-family: 'Courier New', monospace; 
+        }
+
+        /* --- DİĞER SAYFALARIN İÇERİK KUTULARI (Eğitim, Kariyer vs.) --- */
+        .inner-content {
+            background: rgba(255, 255, 255, 0.03); /* Hafif transparan gri zemin */
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 4px solid var(--neon-color); /* Soluna neon çizgi çektik */
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .inner-content h3 {
+            color: var(--neon-color);
+            margin-bottom: 25px;
+            font-size: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1); /* Altına hafif bir ayraç çizgisi */
+            padding-bottom: 10px;
+        }
+        
+        /* ZAMAN ÇİZELGESİ (Timeline) TASARIMI */
+        .timeline {
+            border-left: 2px solid var(--neon-color); /* Dikine akan o ana çizgi */
+            padding-left: 20px;
+            margin-left: 10px;
+        }
+
+        /* Timeline içindeki her bir eleman (okul veya proje) */
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        /* Projenin üstüne fareyle gelince sağa kaysın ve solunda neon ışık çıksın */
+        .timeline-item:hover {
+            background: rgba(0, 242, 254, 0.05);
+            transform: translateX(10px); 
+            box-shadow: inset 2px 0 0 var(--neon-color);
+        }
+
+        /* Timeline çizgisi üzerindeki parlak yuvarlak noktalar */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px; /* Çizginin üstüne tam oturtmak için sola çektik */
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--neon-color);
+            box-shadow: 0 0 10px var(--neon-color);
+            transition: 0.3s;
+        }
+
+        /* Noktanın üstüne gelince büyümesi ve daha çok parlaması */
+        .timeline-item:hover::before {
+            box-shadow: 0 0 20px var(--neon-color), 0 0 40px var(--neon-color);
+            transform: scale(1.2);
+        }
+        
+        .timeline-item h4 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-date {
+            color: var(--neon-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-item p {
+            color: var(--gray-text);
+            line-height: 1.5;
+        }
+
+        /* --- POP-UP (MODAL) TASARIMI --- */
+        
+        /* Arka planı koyulaştıran ve flulaştıran siyah katman */
+        .modal-overlay {
+            position: fixed; /* Ekranı tam kaplasın */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85); 
+            backdrop-filter: blur(8px); /* Blur (Bulanıklık) efekti */
+            display: none; /* Başta gizli */
+            justify-content: center; /* İçeriği ortalar */
+            align-items: center;
+            z-index: 1000; /* Her şeyin üstünde görünmesini sağlar */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* JS ile active class'ı eklenince görünür olur */
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Pop-up kutusunun kendisi */
+        .modal-content {
+            background: var(--bg-color);
+            border: 1px solid rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            transform: translateY(-50px) scale(0.9); /* Başlangıçta küçük ve yukarıda */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Açılırken zıplama (bounce) efekti */
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1); /* Orijinal boyutuna ve yerine gelir */
+        }
+
+        /* Pop-up kapatma tuşu (X) */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: var(--gray-text);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--neon-color);
+            transform: rotate(90deg); /* Üstüne gelince dönme efekti */
+        }
+
+        .modal-title {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-date {
+            color: var(--neon-color);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 242, 254, 0.1);
+            border-radius: 20px;
+        }
+
+        .modal-desc {
+            color: var(--gray-text);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* --- İLETİŞİM LİSTESİ --- */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item i {
+            color: var(--neon-color);
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--neon-color);
+        }
+
+        /* --- EN ALT KISIM (FOOTER) --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--gray-text);
+            font-size: 1rem;
+            font-weight: 600;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.2);
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+        }
+
+        /* --- MOBİL UYUMLULUK (TELEFON EKRANI İÇİN) --- */
+        /* Ekran 992px'den küçükse aşağıdaki kodlar devreye girer */
+        @media (max-width: 992px) {
+            header {
+                flex-direction: column; /* Logoyu ve menüyü alt alta atar */
+                padding: 1.5rem;
+            }
+            .section.active {
+                flex-direction: column-reverse; /* Sağdaki dev sembolü üstte, yazıları altta gösterir */
+                justify-content: center;
+                text-align: center;
+            }
+            .content-left {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 2rem;
+            }
+            .content-left p {
+                text-align: center;
+            }
+            .skills-container {
+                justify-content: center;
+            }
+            .content-right {
+                width: 100%;
+            }
+            .neon-circle {
+                width: 250px; /* Yuvarlağı telefonda küçültür */
+                height: 250px;
+            }
+            .code-visual {
+                font-size: 6rem; /* { } simgesini küçültür */
+            }
+            .section {
+                padding: 2rem 1.5rem; /* Yanlardan boşluğu azaltır */
+            }
+            .inner-content {
+                padding: 25px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Berkay <span>Özdemir</span></div>
+        <nav>
+            <ul>
+                <li><a class="nav-link active" onclick="showSection('home')">Ana Sayfa</a></li>
+                <li><a class="nav-link" onclick="showSection('education')">Eğitim & Projeler</a></li>
+                <li><a class="nav-link" onclick="showSection('experience')">Kariyer & İş Projeleri</a></li>
+                <li><a class="nav-link" onclick="showSection('contact')">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="section active">
+        <div class="content-left">
+            <h1>Merhaba, ben<br>Berkay Özdemir</h1>
+            <h2>Ben <span>Junior Software Developer'ım</span></h2>
+            <p>Profesyonel iş hayatıma Porto Yazılım bünyesinde Junior Software Developer olarak devam etmekteyim. Kurumsal mimarilerin inşası, bulut sunucu yönetimleri ve iş süreçlerini otomatize eden yazılımlar geliştiriyorum. Ölçeklenebilir, güvenli ve performans odaklı çözümler üretmek temel motivasyonumdur.</p>
+            
+            <div class="skills-container">
+                <span class="skill-badge">C# & .NET</span>
+                <span class="skill-badge">SQL Server</span>
+                <span class="skill-badge">REST API</span>
+                <span class="skill-badge">Yapay Zeka (AI)</span>
+                <span class="skill-badge">Görüntü İşleme</span>
+                <span class="skill-badge">Adobe Creative Suite</span>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/brky0z/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/brky0z" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mehmet-berkay-%C3%B6zdemir/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <div class="btn-group">
+                <a href="cv.pdf" target="_blank" class="btn btn-neon">CV İndir</a>
+                <a onclick="showSection('contact')" class="btn btn-outline">Bana Ulaş</a>
+            </div>
+        </div>
+        <div class="content-right">
+            <div class="neon-circle">
+                <div class="code-visual">{ }</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="content-left" style="max-width: 100%; width: 100%;">
+            <div class="inner-content">
+                <h3>Eğitim Hayatım</h3>
+                <div class="timeline">
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>İstanbul Üniversitesi</h4>
+                        <span class="timeline-date">Açıköğretim | Devam Ediyor</span>
+                        <p>Web Tasarımı ve Kodlama bölümünde eğitimime devam ederek modern web teknolojileri ve önyüz geliştirme mimarileri üzerine yetkinliklerimi artırıyorum.</p>
+                    </div>
+                    
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>İstanbul Beykent Üniversitesi</h4>
+                        <span class="timeline-date">28/08/2023 - 05/09/2025</span>
+                        <p>Bilgisayar Programcılığı bölümünden mezun oldum. Öğrenim sürecim boyunca nesne yönelimli programlama, veritabanı yönetim sistemleri ve yazılım algoritmaları üzerine kapsamlı projeler geliştirdim.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Akademik & Bireysel Projeler</h3>
+                <div class="timeline">
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>Yapay Zeka & API Entegrasyonları</h4>
+                        <span class="timeline-date">AI / REST API / Mimari</span>
+                        <p>Farklı servislerin birbiriyle konuşmasını sağlayan API yapılarını çözüp, yapay zeka tabanlı algoritmalar geliştirdim.</p>
+                    </div>
+
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>Yüz Tanıma ve QR Okuma Sistemleri</h4>
+                        <span class="timeline-date">Görüntü İşleme / Otomasyon</span>
+                        <p>Kameradan anlık veri çekip analiz eden yüz tanıma (Face Recognition) algoritması ve hızlı okuma yapabilen QR kod entegrasyonlu uygulamalar geliştirdim.</p>
+                    </div>
+
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>Hastane Otomasyon Sistemi</h4>
+                        <span class="timeline-date">C# / Masaüstü Uygulama / Veritabanı Mimarisi</span>
+                        <p>Hasta kayıt, randevu takibi ve doktor/personel yönetimini tek bir veritabanı üzerinden entegre şekilde yürüten kapsamlı masaüstü otomasyon projesi.</p>
+                    </div>
+
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>Reklam Filmi ve Prodüksiyon</h4>
+                        <span class="timeline-date">Adobe Creative Suite / Medya Tasarımı</span>
+                        <p>Sadece kod tarafında kalmayıp işin görsel ve sunum boyutuna da el attım; Adobe programları ile profesyonel seviyede reklam filmi kurguladım.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="content-left" style="max-width: 100%; width: 100%;">
+            <div class="inner-content">
+                <h3>Kariyer</h3>
+                
+                <div class="timeline" style="margin-bottom: 40px;">
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>Junior Software Developer @ Porto Yazılım</h4>
+                        <span class="timeline-date">Mayıs 2025 - Günümüz</span>
+                        <p>Mayıs 2025'te stajyer olarak adım attığım Porto Yazılım'da, sergilediğim performans neticesinde kadrolu Junior Software Developer olarak görevime devam etmekteyim. Şirketimizin bulut sunucu altyapısının kodlanması, veritabanı optimizasyonları ve iç işleyişi otomatize eden kurumsal araçların geliştirilmesinden sorumluyum.</p>
+                    </div>
+                </div>
+
+                <h3>Öne Çıkan Kurumsal Projeler</h3>
+                <div class="timeline">
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>Mikro ERP Otomasyon Aracı</h4>
+                        <span class="timeline-date">C# / SQL Server / Entegrasyon</span>
+                        <p>Şirket içi operasyonları hızlandırmak amacıyla tasarladığım, Mikro ERP sistemi güncellemeleri sırasında SQL trigger'larını otomatik olarak revize eden ve hata payını sıfıra indiren entegrasyon yazılımı.</p>
+                    </div>
+                    
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>Mikro Otomatik Güncelleme Programı</h4>
+                        <span class="timeline-date">C# / Versiyon Kontrol Sistemi</span>
+                        <p>Mikro sistemlerinin versiyon yükseltme ve yama işlemlerini insan müdahalesine gerek kalmadan, arka planda güvenli bir şekilde gerçekleştiren otomasyon sistemi.</p>
+                    </div>
+
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>SQL Backup Programı</h4>
+                        <span class="timeline-date">Veritabanı Yönetimi / Güvenlik</span>
+                        <p>Şirketin kritik veritabanlarını olası veri kayıplarına karşı koruyan; periyodik yedeklemeleri zamanlanmış görevlerle alıp güvenli sunuculara aktaran özel araç.</p>
+                    </div>
+
+                    <div class="timeline-item" onclick="openModal(this)">
+                        <h4>Mikro Link Üretici Programı</h4>
+                        <span class="timeline-date">C# / Dinamik Linkleme</span>
+                        <p>Mikro altyapısıyla tam uyumlu çalışan, mikro resmi websitesinden çektiği parametrelere göre anlık ve güvenli erişim linkleri üreterek iş akışını hızlandıran yazılım çözümü.</p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 40px;">Referanslar</h3>
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <p style="color: #fff; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; margin: 0;">
+                        <i class="fa-solid fa-user-tie" style="color: var(--neon-color);"></i> Umut Ağagil
+                    </p>
+                    <p style="color: #fff; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; margin: 0;">
+                        <i class="fa-solid fa-user-tie" style="color: var(--neon-color);"></i> Beyhan Deniz Yüksel
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="content-left" style="max-width: 100%; width: 100%;">
+            <div class="inner-content">
+                <h3>Bana Ulaşın</h3>
+                <p style="color: var(--gray-text); font-size: 1.1rem;">Projeleriniz, işbirlikleri veya teknik danışmanlık için aşağıdaki kanallardan benimle iletişime geçebilirsiniz.</p>
+                
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:brkyoz8833@gmail.com">brkyoz8833@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/mehmet-berkay-%C3%B6zdemir/" target="_blank">linkedin.com/in/mehmet-berkay-özdemir</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/brky0z" target="_blank">github.com/brky0z</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/brky0z/" target="_blank">instagram.com/brky0z</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Mehmet Berkay Özdemir
+    </footer>
+
+    <div class="modal-overlay" id="infoModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()"> <i class="fa-solid fa-xmark close-btn" onclick="closeModal(event, true)"></i>
+            <h3 class="modal-title" id="modalTitle">Başlık</h3>
+            <span class="modal-date" id="modalDate">Tarih / Etiket</span>
+            <p class="modal-desc" id="modalDesc">Buraya detaylı açıklama gelecek...</p>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. SİTE İÇİ SAYFA GEÇİŞ FONKSİYONU ---
+        // Menüdeki linklere tıklayınca bu çalışır, ilgili section'ı görünür yapar.
+        function showSection(sectionId) {
+            // Önce tüm bölümleri (section) gizle
+            document.querySelectorAll('.section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            
+            // Tüm menü linklerinden active parlamasını (turkuaz rengi) kaldır
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Tıklanan bölümü ekranda göster
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Tıklanan menü linkini parlat (active yap)
+            if(event) {
+                event.target.classList.add('active');
+            }
+            
+            // Mobilde menü tıklandıktan sonra ekranın en üstüne (0,0 noktasına) scroll at (kaydır)
+            window.scrollTo(0, 0);
+        }
+
+        // --- 2. POP-UP (MODAL) AÇMA FONKSİYONU ---
+        // Projelerin veya eğitimin üstüne tıklayınca bu çalışır
+        function openModal(element) {
+            // "element", tıkladığımız kartın kendisidir. İçindeki yazıları alıyoruz.
+            const title = element.querySelector('h4').innerText;
+            const date = element.querySelector('.timeline-date').innerText;
+            const desc = element.querySelector('p').innerText;
+
+            // Aldığımız bu yazıları Pop-up iskeletinin içindeki boş yerlere yazdırıyoruz
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDate').innerText = date;
+            document.getElementById('modalDesc').innerText = desc;
+
+            // Pop-up kutusunu HTML'de görünür yapıyoruz (display: flex)
+            const modal = document.getElementById('infoModal');
+            modal.style.display = 'flex';
+            
+            // "active" class'ı ekleyerek o zıplama (bounce) ve parlama efektini tetikliyoruz.
+            // Timeout kullandık çünkü display:none'dan çıkarken animasyon aniden çalışmaz, azıcık geciktirmek gerekir.
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+        }
+
+        // --- 3. POP-UP (MODAL) KAPATMA FONKSİYONU ---
+        function closeModal(event, forceClose = false) {
+            // Sadece arka planın karanlık kısmına (infoModal) VEYA direkt X tuşuna (forceClose) basınca kapansın.
+            // Böylece yazının üstüne tıklayınca kapanmaz.
+            if (forceClose || event.target.id === 'infoModal') {
+                const modal = document.getElementById('infoModal');
+                
+                // Önce efekti iptal edip şeffaflaştırıyoruz
+                modal.classList.remove('active');
+                
+                // Şeffaflaşma efekti 0.3 saniye (300ms) sürdüğü için, tamamen kaybolduktan sonra display:none yapıp kaldırıyoruz.
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
