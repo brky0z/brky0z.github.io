@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta name="description" content="Mehmet Berkay Özdemir - Junior Software Developer. C#, .NET, Sistem Mimarisi, SQL Server ve Bulut Teknolojileri üzerine profesyonel çözümler.">
     
     <meta property="og:title" content="Berkay Özdemir | Backend & System Dev">
@@ -18,165 +19,70 @@
     <title>Berkay Özdemir | Backend & System Dev</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%2300f2fe%22 font-family=%22monospace%22 font-weight=%22bold%22>{ }</text></svg>">
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ANA RENK PALETİ: Eğer ileride sitenin rengini değiştirmek istersen sadece buradaki neon kodlarını değiştirmen yeterli. Bütün site ona uyar. */
+        /* ANA RENK PALETİ: Bütün renkleri burada tanımladık. İleride turkuazı kırmızı yapmak istersen sadece burayı değiştirirsin. */
         :root {
-            --bg-dark: #070709;           /* En arka planın koyu siyahı */
-            --bg-card: #111116;           /* Proje kartlarının hafif grimsi siyahı */
-            --primary-neon: #00f2fe;      /* Ana turkuaz neon rengimiz */
-            --secondary-neon: #4facfe;    /* Geçişlerde (gradyan) kullanılan ikinci mavi ton */
-            --text-main: #ffffff;         /* Ana başlıkların bembeyaz rengi */
-            --text-muted: #8892b0;        /* Paragrafların göz yormayan gri rengi */
-            --border-glass: rgba(0, 242, 254, 0.15); /* Hafif şeffaf neon çerçeve rengi */
+            --bg-dark: #070709;           /* En arka planın karanlık tonu */
+            --bg-card: #111116;           /* Proje kartlarının arka planı */
+            --primary-neon: #00f2fe;      /* Ana neon rengimiz (Turkuaz) */
+            --secondary-neon: #4facfe;    /* Geçişler için açık mavi */
+            --text-main: #ffffff;         /* Başlıkların bembeyaz rengi */
+            --text-muted: #8892b0;        /* Yazıların göz yormayan gri rengi */
+            --border-glass: rgba(0, 242, 254, 0.15); /* Hafif şeffaf neon çerçeve */
         }
 
         /* --- ÖZEL NEON KAYDIRMA ÇUBUĞU (SCROLLBAR) --- */
-        /* Tarayıcının standart gri çubuğunu iptal edip kendi neon çubuğumuzu çiziyoruz */
-        ::-webkit-scrollbar { width: 8px; } /* Çubuğun inceliği */
+        ::-webkit-scrollbar { width: 8px; } /* Çubuğun kalınlığı */
         ::-webkit-scrollbar-track { background: var(--bg-dark); } /* Çubuğun arkasındaki yol */
-        ::-webkit-scrollbar-thumb { 
-            background: linear-gradient(180deg, var(--primary-neon), var(--secondary-neon)); /* Çubuğun kendisi */
-            border-radius: 4px; 
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-neon);
-            box-shadow: 0 0 10px var(--primary-neon); /* Üstüne gelince parlar */
-        }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--primary-neon), var(--secondary-neon)); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-neon); box-shadow: 0 0 10px var(--primary-neon); }
 
-        /* GENEL SIFIRLAMA: Tarayıcıların kendi koyduğu boşlukları silip kontrolü biz alıyoruz */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth; /* Linklere tıklayınca şak diye değil, yumuşakça (kayarak) inmesini sağlar */
-        }
+        /* GENEL SIFIRLAMA: Tarayıcıların kendi koyduğu boşlukları silip, yumuşak kaymayı (smooth scroll) aktif ettik. */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-        /* SAYFANIN GÖVDESİ */
+        /* SAYFANIN GÖVDESİ (BODY) */
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden; /* Sitenin sağa sola kaymasını (taşmayı) engeller */
-            
-            /* Arka plana uzay derinliği veren 2 tane çok hafif devasa neon yuvarlak gradyan ışığı */
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.03), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(79, 172, 254, 0.03), transparent 25%);
+            background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; 
+            /* Arka plandaki devasa neon parlaklıkları (Derinlik katar) */
+            background-image: radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.03), transparent 25%), radial-gradient(circle at 85% 30%, rgba(79, 172, 254, 0.03), transparent 25%);
         }
 
-        /* Başlıkların daha teknik ve köşeli bir yazı tipine (Space Grotesk) sahip olmasını sağlıyoruz */
-        h1, h2, h3, h4, .logo {
-            font-family: 'Space Grotesk', sans-serif;
-        }
+        /* Başlıklar için daha köşeli olan Space Grotesk fontunu atadık */
+        h1, h2, h3, h4, .logo { font-family: 'Space Grotesk', sans-serif; }
 
-        /* --- PRELOADER (İLK YÜKLEME EKRANI) STİLLERİ --- */
-        /* Site yüklenirken ekranda duran simsiyah ve ortasında parantez olan o ekran */
-        #preloader {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background: var(--bg-dark);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 99999; /* Her şeyin en üstünde durur */
-            transition: opacity 0.5s ease, visibility 0.5s ease; /* Kaybolurken yumuşak kaybolur */
-        }
-        #preloader.hidden {
-            opacity: 0; /* Site yüklenince görünmez olur */
-            visibility: hidden;
-        }
-        /* Yükleme ekranındaki yanıp sönen dev { } ikonu */
-        .preloader-icon {
-            font-size: 5rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            color: var(--primary-neon);
-            text-shadow: 0 0 20px var(--primary-neon);
-            animation: blink 1s infinite alternate; /* Işık gibi yanıp sönmesini sağlayan animasyon */
-        }
-        @keyframes blink {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0.4; transform: scale(0.95); } /* Hafif küçülüp soluklaşır */
-        }
+        /* --- PRELOADER (İLK AÇILIŞTAKİ YÜKLEME EKRANI) --- */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-dark); display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        #preloader.hidden { opacity: 0; visibility: hidden; } /* Yükleme bitince js ile bu class gelip ekranı gizler */
+        .preloader-icon { font-size: 5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--primary-neon); text-shadow: 0 0 20px var(--primary-neon); animation: blink 1s infinite alternate; }
+        @keyframes blink { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0.4; transform: scale(0.95); } }
 
-        /* --- SCROLL ANİMASYONU (Aşağı İndikçe Belirme) --- */
-        /* Bu class'a sahip olan her şey başlangıçta aşağıda (40px) ve görünmez (opacity:0) başlar */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        /* Ekrana girdiği an JS tarafından .active class'ı eklenir ve yukarı kayıp görünür olur */
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* --- AŞAĞI KAYDIRDIKÇA ELEMANLARIN BELİRMESİ (REVEAL) --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- ÜST MENÜ (NAVBAR) --- */
-        header {
-            position: fixed; /* Ekranı aşağı kaydırsan da hep en tepede seninle gelir */
-            top: 0; width: 100%;
-            padding: 1.5rem 5rem;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000;
-            background: rgba(7, 7, 9, 0.8);
-            backdrop-filter: blur(10px); /* Arka planı buzlu cam gibi flulaştıran kod (Glassmorphism) */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
+        /* --- NAVBAR (ÜST MENÜ) --- */
+        header { position: fixed; top: 0; width: 100%; padding: 1.5rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(7, 7, 9, 0.8); backdrop-filter: blur(10px); /* Arka planı buzlu cam yapar */ border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
         .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
-        .logo span { color: var(--primary-neon); } /* İçindeki sıfır'ı (0) neon yapar */
-
+        .logo span { color: var(--primary-neon); } /* Logo içindeki 0 harfini neon yapar */
         nav ul { display: flex; gap: 2.5rem; list-style: none; }
-        
-        /* Menü linkleri tasarımı */
-        nav ul li a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.95rem; font-weight: 500;
-            position: relative; /* Alt çizgiyi hizalamak için gerekli */
-            transition: color 0.3s;
-        }
+        nav ul li a { color: var(--text-main); text-decoration: none; font-size: 0.95rem; font-weight: 500; position: relative; transition: color 0.3s; }
         nav ul li a:hover { color: var(--primary-neon); }
+        /* Linklerin altındaki uzayan neon çizgi */
+        nav ul li a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--primary-neon); transition: width 0.3s ease; }
+        nav ul li a:hover::after { width: 100%; }
 
-        /* Menü linklerinin üstüne gelince altından sağa doğru uzayan ince neon çizgi */
-        nav ul li a::after {
-            content: ''; position: absolute;
-            width: 0; height: 2px;
-            bottom: -5px; left: 0;
-            background-color: var(--primary-neon);
-            transition: width 0.3s ease;
-        }
-        nav ul li a:hover::after { width: 100%; } /* Hover (üstüne gelince) çizgiyi %100 uzatır */
+        /* --- ORTAK BÖLÜM (SECTION) AYARLARI --- */
+        section { min-height: 100vh; padding: 8rem 5rem 4rem 5rem; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
+        .section-title { font-size: 2.5rem; margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; }
+        /* Başlıkların yanındaki uzun şeffaf çizgi */
+        .section-title::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, var(--border-glass), transparent); }
+        .section-title span { color: var(--primary-neon); font-family: 'Courier New', Courier, monospace; font-size: 1.5rem; }
 
-        /* --- ORTAK BÖLÜM TASARIMLARI (Her koca ekran 1 section'dır) --- */
-        section {
-            min-height: 100vh; /* Her bölüm ekranı tam kaplasın */
-            padding: 8rem 5rem 4rem 5rem; /* Üstten 8rem boşluk bıraktık ki Navbar yazıları örtmesin */
-            display: flex; flex-direction: column; justify-content: center;
-            position: relative; z-index: 1; /* Noktaların üstünde kalsın diye */
-        }
-
-        /* "02. Hakkımda", "03. Projeler" gibi büyük bölüm başlıkları */
-        .section-title {
-            font-size: 2.5rem; margin-bottom: 3rem;
-            display: flex; align-items: center; gap: 1rem;
-        }
-        /* Başlığın yanından sağa doğru uzayıp kaybolan fiyakalı ince çizgi */
-        .section-title::after {
-            content: ""; height: 1px; flex: 1;
-            background: linear-gradient(90deg, var(--border-glass), transparent);
-        }
-        /* Başlıktaki rakamlar (01., 02. vb.) */
-        .section-title span {
-            color: var(--primary-neon); font-family: 'Courier New', Courier, monospace; font-size: 1.5rem;
-        }
-
-        /* --- 01. GİRİŞ (HERO) BÖLÜMÜ --- */
+        /* --- 01. HERO (GİRİŞ) BÖLÜMÜ --- */
         #home { flex-direction: row; align-items: center; justify-content: space-between; }
         .hero-left { max-width: 60%; }
         .hero-tag { color: var(--primary-neon); font-family: 'Courier New', Courier, monospace; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
@@ -184,109 +90,104 @@
         .hero-left h2 { font-size: 2rem; color: var(--text-muted); margin-bottom: 1.5rem; }
         .hero-left p { font-size: 1.1rem; color: var(--text-muted); max-width: 80%; margin-bottom: 2.5rem; }
 
-        /* CV İndir ve Projeleri Gör butonları */
+        /* Giriş bölümündeki butonlar */
         .btn-group { display: flex; gap: 1.5rem; }
         .btn { padding: 0.8rem 2rem; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
-        
         .btn-primary { background: rgba(0, 242, 254, 0.1); color: var(--primary-neon); border: 1px solid var(--primary-neon); }
         .btn-primary:hover { background: var(--primary-neon); color: var(--bg-dark); box-shadow: 0 0 20px rgba(0, 242, 254, 0.4); transform: translateY(-3px); }
-        
         .btn-secondary { background: transparent; color: var(--text-main); border: 1px solid var(--text-muted); }
         .btn-secondary:hover { border-color: var(--text-main); transform: translateY(-3px); }
 
-        /* Sağ taraftaki, havada süzülen sahte Terminal/Kod Kutusu */
+        /* Sağ Taraftaki Havada Süzülen Kod Kutusu */
         .hero-right { position: relative; }
-        .code-box { background: #0d0d12; border: 1px solid var(--border-glass); border-radius: 8px; padding: 1.5rem; width: 350px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); animation: float 6s ease-in-out infinite; }
-        
-        /* Mac'lerdeki gibi 3 tane renkli kırmızı, sarı, yeşil pencere tuşu */
+        .code-box { background: #0d0d12; border: 1px solid var(--border-glass); border-radius: 8px; padding: 1.5rem; width: 400px; min-height: 250px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); animation: float 6s ease-in-out infinite; }
         .code-header { display: flex; gap: 8px; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot.red { background: #ff5f56; } .dot.yellow { background: #ffbd2e; } .dot.green { background: #27c93f; }
+        .code-content { font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; color: #a5b1c2; line-height: 1.5;}
         
-        /* Terminal içindeki kod renkleri (Syntax Highlighting) */
-        .code-content { font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; color: #a5b1c2; }
-        .code-content .key { color: #ff79c6; } .code-content .str { color: #f1fa8c; } .code-content .bool { color: #bd93f9; }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); } /* Ortaya geldiğinde 20px yukarı çıkar */
-            100% { transform: translateY(0px); }
-        }
+        .typed-cursor { color: var(--primary-neon); font-size: 1.2rem; }
+        /* Kod kutusunun havada inip çıkmasını sağlayan animasyon */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
 
-        /* --- 02. HAKKIMDA --- */
+        /* --- 02. HAKKIMDA BÖLÜMÜ --- */
         .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .about-text p { margin-bottom: 1.5rem; font-size: 1.05rem; color: var(--text-muted); }
-        
-        /* Teknoloji yığını (C#, SQL) kartlarının 3'erli şekilde dizilmesi */
         .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
         .skill-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; display: flex; align-items: center; gap: 10px; font-weight: 500; transition: 0.3s; }
         .skill-item i { color: var(--primary-neon); }
-        .skill-item:hover { border-color: var(--primary-neon); transform: translateY(-5px); } /* Üstüne gelince havaya kalkar */
+        .skill-item:hover { border-color: var(--primary-neon); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,242,254,0.1); } 
 
         /* --- 03. PROJELER BÖLÜMÜ --- */
-        /* Ekran sığdıkça kartları yan yana dizer, sığmazsa alta atar (auto-fit mantığı) */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
         
-        /* Proje Kartı Tasarımı */
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 10px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            position: relative; overflow: hidden; display: flex; flex-direction: column; z-index: 2;
+        /* Proje Kartı (3D Tilt efekti için transform-style: preserve-3d eklendi) */
+        .project-card { 
+            background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 2rem; 
+            position: relative; overflow: hidden; display: flex; flex-direction: column; z-index: 2; transform-style: preserve-3d;
+            cursor: pointer; 
         }
-        .project-card:hover {
-            transform: translateY(-10px); /* Havaya kalkma */
-            border-color: var(--border-glass);
-            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.05);
-        }
-
-        /* Kartın üst kısmından soldan sağa doğru uzayan neon ışık çizgisi efekti */
-        .project-card::before {
-            content: ''; position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: var(--primary-neon);
-            transform: scaleX(0); /* Başlangıçta görünmez (uzunluk 0) */
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-        .project-card:hover::before { transform: scaleX(1); } /* Hoverda %100 uzar */
-
+        .project-card:hover { border-color: var(--border-glass); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); }
+        /* Kartın üst kısmından uzayan neon çizgi */
+        .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--primary-neon); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+        .project-card:hover::before { transform: scaleX(1); } 
+        
+        /* Kart içeriğini 3D olarak havaya kaldırma (Derinlik hissi) */
+        .project-header, .project-card h3, .project-card p, .project-tech { transform: translateZ(30px); }
         .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
         .project-header i.fa-folder { font-size: 2.5rem; color: var(--primary-neon); }
-
-        /* YENİ ŞIK GITHUB BUTONU (Hap / Pill Tasarımı) */
-        .project-links a {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--primary-neon); font-size: 0.85rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600;
-            text-decoration: none; padding: 6px 14px;
-            border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 20px;
-            background: rgba(0, 242, 254, 0.05); transition: all 0.3s ease;
-        }
-        .project-links a:hover { 
-            background: var(--primary-neon); color: var(--bg-dark); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px);
-        }
+        
+        /* Proje "İncele" butonu */
+        .project-links a { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-neon); font-size: 0.85rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; text-decoration: none; padding: 6px 14px; border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 20px; background: rgba(0, 242, 254, 0.05); transition: all 0.3s ease; }
+        .project-links a:hover { background: var(--primary-neon); color: var(--bg-dark); box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px); }
 
         .project-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
-        /* flex-grow: 1 sayesinde kartın içi boş olsa bile butonlar hep aynı hizada en altta kalır */
         .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
         .project-tech { display: flex; flex-wrap: wrap; gap: 15px; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: var(--secondary-neon); }
 
+        /* --- KART BÜYÜTME EKRANI (MODAL) --- */
+        /* Karta tıklayınca açılan o janjanlı bulanık arka plan */
+        .modal {
+            display: none; /* JS ile show class'ı gelene kadar görünmez */
+            position: fixed; z-index: 999999; left: 0; top: 0; width: 100%; height: 100vh;
+            background-color: rgba(7, 7, 9, 0.85); 
+            backdrop-filter: blur(15px); /* Sinematik bulanıklık */
+            justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal.show { display: flex; opacity: 1; }
+        
+        /* Ekranın ortasındaki büyüyen kutu */
+        .modal-content {
+            background: var(--bg-card); 
+            border: 1px solid var(--primary-neon);
+            border-radius: 15px; padding: 3rem; 
+            max-width: 650px; width: 90%; position: relative;
+            transform: scale(0.7); /* Başlangıçta küçük durur */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Jöle gibi sekerek büyüme */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(0, 242, 254, 0.15);
+        }
+        .modal.show .modal-content { transform: scale(1); } /* Açıldığında tam boyutuna ulaşır */
+        
+        /* Modal içindeki kapatma (X) tuşu */
+        .close-modal {
+            position: absolute; top: 15px; right: 20px; 
+            color: var(--text-muted); font-size: 1.8rem; cursor: pointer; transition: 0.3s;
+        }
+        .close-modal:hover { color: var(--primary-neon); transform: rotate(90deg); }
+
+        /* Modal içindeki yazıların detaylı ayarları */
+        .modal-content h3 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--primary-neon); }
+        .modal-content p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: #fff; }
+        .modal-content .project-tech { font-size: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;}
+        .modal-content .project-header i.fa-folder { font-size: 3.5rem; }
+
         /* --- 04. KARİYER VE EĞİTİM (TIMELINE/ZAMAN ÇİZELGESİ) --- */
-        /* Dikine inen o ince beyaz çizgi */
         .timeline-container { border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2rem; margin-left: 1rem; }
         .timeline-item { position: relative; margin-bottom: 3rem; padding-bottom: 1rem; }
-        
-        /* Çizginin üstündeki noktalar */
-        .timeline-item::before {
-            content: ''; position: absolute;
-            left: -39px; top: 5px; width: 15px; height: 15px; border-radius: 50%;
-            background: var(--bg-dark); border: 2px solid var(--primary-neon); transition: 0.3s;
-        }
-        /* Noktanın üstüne gelince fosforlu parlaması */
-        .timeline-item:hover::before { background: var(--primary-neon); box-shadow: 0 0 15px var(--primary-neon); }
-
+        /* Zaman çizelgesindeki yuvarlak noktalar */
+        .timeline-item::before { content: ''; position: absolute; left: -39px; top: 5px; width: 15px; height: 15px; border-radius: 50%; background: var(--bg-dark); border: 2px solid var(--primary-neon); transition: 0.3s; }
+        .timeline-item:hover::before { background: var(--primary-neon); box-shadow: 0 0 15px var(--primary-neon); transform: scale(1.2); }
         .timeline-date { font-family: 'Courier New', Courier, monospace; color: var(--primary-neon); font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
         .timeline-item h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
         .timeline-item h4 { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; font-weight: 400; }
@@ -296,32 +197,78 @@
         .contact-content { text-align: center; max-width: 600px; margin: 0 auto; }
         .contact-content p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem; }
         
-        /* Dev sosyal medya ikonları */
+        /* En alttaki sosyal medya ikonları */
         .social-big { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; }
         .social-big a { color: var(--text-muted); font-size: 2rem; transition: 0.3s; }
         .social-big a:hover { color: var(--primary-neon); transform: translateY(-5px); }
 
-        footer {
-            text-align: center; padding: 2rem;
-            font-family: 'Courier New', Courier, monospace; color: var(--text-muted); font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 1;
+        /* Sitenin en altındaki telif hakkı kısmı */
+        footer { text-align: center; padding: 2rem; font-family: 'Courier New', Courier, monospace; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 1; }
+
+        /* --- YUKARI ÇIK BUTONU TASARIMI --- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-card);
+            color: var(--primary-neon);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid var(--primary-neon);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px); /* Gizliyken biraz aşağıdadır */
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0); /* Görünür olunca yerine oturur */
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-neon);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
         }
 
         /* --- MOBİL UYUM (TELEFON EKRANLARI İÇİN RESPONSIVE TASARIM) --- */
-        /* Ekran 1024px'den küçükse devreye girer. Yani telefon veya tablette tasarım bozulmasın diye burası çalışır. */
         @media (max-width: 1024px) {
             header { padding: 1.5rem 2rem; }
             section { padding: 6rem 2rem 3rem 2rem; }
-            #home { flex-direction: column; text-align: center; gap: 4rem; } /* Metin ve Kod Kutusunu alt alta dizer */
+            #home { flex-direction: column; text-align: center; gap: 4rem; } /* Metin ve Terminali alt alta dizer */
             .hero-left { max-width: 100%; }
             .hero-left p { max-width: 100%; margin: 0 auto 2rem auto; }
-            .btn-group { justify-content: center; } /* Butonları ortalar */
-            .about-content { grid-template-columns: 1fr; } /* Hakkımda yazısını ve resmi alt alta koyar */
-            nav ul { display: none; } /* Mobilde üstteki kalabalık yazılı menüyü tamamen gizler */
+            .btn-group { justify-content: center; } 
+            .about-content { grid-template-columns: 1fr; } /* Hakkımda kısmındaki resim ve yazıyı alt alta dizer */
+            nav ul { display: none; } /* Telefondaki üst menüyü kalabalık yapmasın diye gizler */
+            .code-box { width: 100%; min-height: auto; } /* Terminal mobilde ekrana sığsın diye */
+            .modal-content { padding: 2rem; }
+            .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.2rem; } /* Mobilde ok tuşu ufalır */
         }
     </style>
 </head>
 <body>
+
+    <div id="backToTopBtn" class="back-to-top" title="Yukarı Çık">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
+            <div id="modal-body-content"></div>
+        </div>
+    </div>
 
     <div id="preloader">
         <div class="preloader-icon">{ }</div>
@@ -363,14 +310,7 @@
                     <div class="dot green"></div>
                 </div>
                 <div class="code-content">
-                    <span class="key">const</span> developer = {<br>
-                    &nbsp;&nbsp;name: <span class="str">'Berkay Özdemir'</span>,<br>
-                    &nbsp;&nbsp;role: <span class="str">'Backend & System Dev'</span>,<br>
-                    &nbsp;&nbsp;company: <span class="str">'Porto Yazılım'</span>,<br>
-                    &nbsp;&nbsp;core_stack: [<span class="str">'C#'</span>, <span class="str">'.NET Core'</span>, <span class="str">'SQL'</span>],<br>
-                    &nbsp;&nbsp;problemSolver: <span class="bool">true</span>,<br>
-                    &nbsp;&nbsp;coffeeIntake: <span class="str">'High'</span><br>
-                    };
+                    <span id="typed-code"></span>
                 </div>
             </div>
         </div>
@@ -380,7 +320,7 @@
         <h2 class="section-title reveal"><span>02.</span> Hakkımda</h2>
         <div class="about-content">
             <div class="about-text reveal">
-                <p>Yazılım maceram lise yıllarında teknolojiye duyduğum saf merakla başladı. Bugün ise <strong>Porto Yazılım</strong> bünyesinde profesyonel bir Junior Software Developer olarak, şirket içi sistemleri ayakta tutan kodları yazıyorum.</p>
+                <p>Yazılım maceram lise yıllarında teknolojiye duyduğum saf merakla başladı. Bugün ise <strong>Porto Yazılım</strong> bünyesinde profesyonel bir Junior Software Developer olarak, şirket içi devasa sistemleri ayakta tutan kodları yazıyorum.</p>
                 <p>Mayıs 2025'te stajyer olarak girdiğim şirkette, yazdığım otomasyon araçları ve kurduğum sağlam veritabanı mimarileri sayesinde hızla kadroya dahil edildim. Özellikle <strong>Mikro ERP sistemleri, SQL trigger otomasyonları ve sunucu taraflı API haberleşmeleri</strong> konularında uzmanlaşıyorum.</p>
                 <p>Sadece kod yazmıyor, aynı zamanda İstanbul Üniversitesi'nde eğitimime devam ederek teorik altyapımı modern teknolojilerle harmanlıyorum.</p>
                 
@@ -389,8 +329,8 @@
                     <div class="skill-item"><i class="fa-brands fa-microsoft"></i> C# & .NET Core</div>
                     <div class="skill-item"><i class="fa-solid fa-database"></i> MSSQL Server</div>
                     <div class="skill-item"><i class="fa-solid fa-server"></i> API & Rest Mimarisi</div>
-                    <div class="skill-item"><i class="fa-solid fa-cloud"></i> Bulut Sunucu Yön.</div>
-                    <div class="skill-item"><i class="fa-solid fa-brain"></i> Yapay Zeka Ent.</div>
+                    <div class="skill-item"><i class="fa-solid fa-cloud"></i> Bulut Sunucu Yönetimi</div>
+                    <div class="skill-item"><i class="fa-solid fa-brain"></i> Yapay Zeka Entegrasyonu</div>
                     <div class="skill-item"><i class="fa-brands fa-git-alt"></i> Git & Versiyon Kontrol</div>
                 </div>
             </div>
@@ -406,7 +346,7 @@
         
         <div class="projects-grid">
             
-            <div class="project-card reveal">
+            <div class="project-card reveal" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="15">
                 <div class="project-header">
                     <i class="fa-regular fa-folder"></i>
                     <div class="project-links">
@@ -420,21 +360,21 @@
                 </div>
             </div>
 
-            <div class="project-card reveal">
+            <div class="project-card reveal" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="15">
                 <div class="project-header">
                     <i class="fa-regular fa-folder"></i>
                     <div class="project-links">
                         <a href="https://github.com/brky0z/BrkyozGPT" target="_blank" title="Kodları İncele"><i class="fa-brands fa-github"></i> İncele</a>
                     </div>
                 </div>
-                <h3>BrkyozGPT Yapay Zeka Entegrasyonu</h3>
-                <p>Farklı sistemlerin birbiriyle konuşmasını sağlayan API yapılarını kurarak, iş akışlarına yapay zeka tabanlı veri analizi algoritmaları entegre ettiğim özel proje.</p>
+                <h3>BrkyozGPT Yapay Zeka Ent.</h3>
+                <p>Farklı sistemlerin birbiriyle konuşmasını sağlayan API yapılarını kurarak, iş akışlarına yapay zeka tabanlı veri analizi algoritmaları entegre ettiğim proje.</p>
                 <div class="project-tech">
                     <span>REST API</span> <span>AI Models</span> <span>JSON</span>
                 </div>
             </div>
 
-            <div class="project-card reveal">
+            <div class="project-card reveal" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="15">
                 <div class="project-header">
                     <i class="fa-regular fa-folder"></i>
                     <div class="project-links">
@@ -442,35 +382,35 @@
                     </div>
                 </div>
                 <h3>QR & Yüz Tanıma Otomasyonu</h3>
-                <p>Kameradan anlık veri çekip görüntü işleme algoritmalarıyla çalışan güvenlik odaklı yüz tanıma (Face Recognition) ve QR hızlı erişim sistemi.</p>
+                <p>Kameradan anlık veri çekip görüntü işleme algoritmalarıyla çalışan güvenlik odaklı yüz tanıma ve QR hızlı erişim sistemi.</p>
                 <div class="project-tech">
                     <span>Görüntü İşleme</span> <span>C#</span> <span>Otomasyon</span>
                 </div>
             </div>
 
-            <div class="project-card reveal">
+            <div class="project-card reveal" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="15">
                 <div class="project-header">
                     <i class="fa-regular fa-folder"></i>
                 </div>
                 <h3>Mikro ERP Otomasyon Sistemi</h3>
-                <p>Şirket içi operasyonları hızlandırmak amacıyla tasarladığım, Mikro ERP sistemi güncellemeleri sırasında SQL trigger'larını insan müdahalesi olmadan senkronize eden kurumsal yazılım.</p>
+                <p>Şirket içi operasyonları hızlandırmak amacıyla tasarladığım, Mikro ERP sistemi güncellemeleri sırasında SQL trigger'larını senkronize eden kurumsal yazılım.</p>
                 <div class="project-tech">
                     <span>C#</span> <span>.NET</span> <span>MSSQL Server</span>
                 </div>
             </div>
 
-            <div class="project-card reveal">
+            <div class="project-card reveal" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="15">
                 <div class="project-header">
                     <i class="fa-regular fa-folder"></i>
                 </div>
-                <h3>SQL Backup</h3>
+                <h3>SQL Backup & Güvenlik Kalkanı</h3>
                 <p>Kritik müşteri ve şirket veritabanlarını periyodik görevlerle arka planda yedekleyen, şifreleyen ve güvenli bulut sunuculara aktaran otomasyon aracı.</p>
                 <div class="project-tech">
                     <span>C#</span> <span>Veritabanı Yönetimi</span> <span>Cron Jobs</span>
                 </div>
             </div>
 
-            <div class="project-card reveal">
+            <div class="project-card reveal" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="15">
                 <div class="project-header">
                     <i class="fa-regular fa-folder"></i>
                 </div>
@@ -480,13 +420,13 @@
                     <span>Web API</span> <span>C#</span> <span>MVC</span>
                 </div>
             </div>
-            
-            <div class="project-card reveal">
+
+            <div class="project-card reveal" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="15">
                 <div class="project-header">
                     <i class="fa-regular fa-folder"></i>
                 </div>
-                <h3>Mikro Link Üretici</h3>
-                <p>Mikro Yazılım'ın resmi web altyapısını anlık olarak tarayıp en güncel versiyon ve kurulum linklerini otomatik çeken, şirket içi IT süreçlerini hızlandıran masaüstü otomasyon aracı.</p>
+                <h3>Mikro Link Üretici & Scraper</h3>
+                <p>Mikro Yazılım'ın resmi web altyapısını anlık olarak tarayıp en güncel versiyon ve kurulum linklerini otomatik çeken masaüstü otomasyon aracı.</p>
                 <div class="project-tech">
                     <span>C#</span> <span>Web Scraping</span> <span>Desktop App</span>
                 </div>
@@ -564,10 +504,10 @@
         
         <div class="contact-content reveal">
             <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Bana Ulaşın</h1>
-            <p>Yeni bir proje mimarisi kurmak, sistemleri otomatize etmek veya sadece soru sormak isterseniz, mail kutum her zaman açık.</p>
+            <p>Yeni bir proje mimarisi kurmak, sistemleri otomatize etmek veya sadece backend dünyası hakkında konuşmak isterseniz, mail kutum her zaman açık. Fırsatları değerlendirmeye hazırım.</p>
             
             <a href="mailto:brkyoz8833@gmail.com" class="btn btn-primary" style="display: inline-flex; margin-top: 1rem; font-size: 1.1rem; padding: 1rem 2.5rem;">
-                <i class="fa-regular fa-envelope"></i> Merhaba De!
+                <i class="fa-regular fa-envelope"></i> Bana Ulaşabilirsiniz
             </a>
 
             <div class="social-big">
@@ -583,73 +523,130 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     
     <script>
-        // 1. PRELOADER (YÜKLEME EKRANI) KONTROLÜ
-        // window.onload komutu: Sitenin tüm resimleri, fontları yüklenince içindeki komutu çalıştırır.
+        // 1. KARTLARA TIKLAYINCA AÇILAN MODAL (BÜYÜTME EKRANI)
+        const modal = document.getElementById('project-modal');
+        const modalBody = document.getElementById('modal-body-content');
+        const closeModal = document.querySelector('.close-modal');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        // Bütün kartlara tıklandığında ne olacağını belirliyoruz
+        projectCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Eğer adam zaten GitHub ikonuna/linkine bastıysa modalı hiç açma, GitHub'a gitsin.
+                if(e.target.closest('a')) return;
+                
+                // Tıklanan kartın içindeki HTML'i kopyalayıp Modalin içine at
+                modalBody.innerHTML = card.innerHTML;
+                // Modalı ekranda göster (show)
+                modal.classList.add('show');
+                // Arka plandaki site fareyle kaymasın
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Çarpı (X) ikonuna basınca modalı kapat
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Arka plan kaydırılabilir olsun
+        });
+
+        // Siyah/bulanık arka plana boş bir yere basınca da modalı kapat
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // 2. YUKARI ÇIK BUTONU KONTROLÜ
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        // Ekranı kaydırdıkça çalışır
+        window.addEventListener('scroll', () => {
+            // Ekranda 400px aşağı inilince butonu görünür yap
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Butona tıklayınca en tepeye (top: 0) kaydırarak çık
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 3. YÜKLEME EKRANI (PRELOADER)
         window.addEventListener('load', function() {
-            // Şov olsun diye, yüklense bile 800 milisaniye (neredeyse 1 saniye) o yanıp sönen parantezleri gösterir, sonra 'hidden' classını verip gizler.
             setTimeout(function() {
+                // Sayfa tamamen yüklendikten 800ms sonra preloader'ı gizle
                 document.getElementById('preloader').classList.add('hidden');
             }, 800);
         });
 
-        // 2. PARTICLES.JS (NEON AĞ EFEKTİ) AYARLARI
-        // number: Ekranda kaç tane nokta olacağı (50).
-        // color: Noktaların rengi (Turkuaz)
-        // line_linked: Noktaları birbirine bağlayan çizgiler (aktif)
+        // 4. CANLI YAZAN HACKER TERMİNALİ (TYPED.JS)
+        // Terminalin içine satır satır yazılacak olan sahte kodumuz
+        let typedString = `
+<span class="key">const</span> developer = {<br>
+&nbsp;&nbsp;name: <span class="str">'Berkay Özdemir'</span>,<br>
+&nbsp;&nbsp;role: <span class="str">'Backend & System Dev'</span>,<br>
+&nbsp;&nbsp;company: <span class="str">'Porto Yazılım'</span>,<br>
+&nbsp;&nbsp;core_stack: [<span class="str">'C#'</span>, <span class="str">'.NET Core'</span>, <span class="str">'SQL'</span>],<br>
+&nbsp;&nbsp;problemSolver: <span class="bool">true</span>,<br>
+&nbsp;&nbsp;coffeeIntake: <span class="str">'High'</span><br>
+};`;
+        var typed = new Typed('#typed-code', {
+            strings: [typedString],
+            typeSpeed: 30, // Harflerin yazılma hızı
+            showCursor: true,
+            cursorChar: '|', // Sondaki imleç
+            contentType: 'html' // Kodları HTML olarak oku (renklendirmeler bozulmasın diye)
+        });
+
+        // 5. NEON AĞ EFEKTİ (PARTICLES.JS) AYARLARI
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#00f2fe" },
+                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } }, // Kaç tane nokta olsun
+                "color": { "value": "#00f2fe" }, // Turkuaz rengi
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.3, "random": false },
                 "size": { "value": 2, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#00f2fe", "opacity": 0.15, "width": 1 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00f2fe", "opacity": 0.15, "width": 1 }, // Noktaları bağlayan çizgiler
                 "move": { "enable": true, "speed": 1.5, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
             },
             "interactivity": {
                 "detect_on": "canvas",
-                // Fare (onhover) üzerine gelince noktaları iter/kaçırtır (grab modunda çeker)
-                "events": { 
-                    "onhover": { "enable": true, "mode": "grab" }, 
-                    "onclick": { "enable": true, "mode": "push" }, 
-                    "resize": true 
-                },
-                "modes": { 
-                    "grab": { "distance": 140, "line_linked": { "opacity": 0.4 } }, 
-                    "push": { "particles_nb": 4 } 
-                }
+                // Fare üstüne gelince (grab) noktalar ipe dizilir, tıklayınca (push) çoğalır
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.4 } }, "push": { "particles_nb": 4 } }
             },
             "retina_detect": true
         });
 
-        // 3. SCROLL REVEAL (AŞAĞI KAYDIRDIKÇA YAZILARIN YUKARI ÇIKMASI)
-        // '.reveal' classına sahip bütün HTML elemanlarını seçtik
+        // 6. SCROLL REVEAL (Aşağı İndikçe Elemanların Belirmesi)
         const reveals = document.querySelectorAll('.reveal');
-        // threshold: Elemanın %15'i ekrana girdiği an animasyonu tetikler.
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-        // IntersectionObserver: Ekrandaki elementleri izleyen modern JS API'si
+        // threshold: Elemanın %15'i ekranda görününce animasyonu patlatır
+        const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
         const revealOnScroll = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-                entry.target.classList.add('active'); // Ekrana girince .active classını basar
-                observer.unobserve(entry.target); // Animasyon 1 kere çalıştıktan sonra izlemeyi bırakır (yukarı çıkınca tekrar kaybolmasın diye)
+                entry.target.classList.add('active'); 
+                observer.unobserve(entry.target); // Animasyon tekrarlamasın diye izlemeyi bırakır
             });
         }, revealOptions);
+        reveals.forEach(reveal => { revealOnScroll.observe(reveal); });
 
-        // Bulduğumuz her '.reveal' için izleyiciyi çalıştır
-        reveals.forEach(reveal => {
-            revealOnScroll.observe(reveal);
-        });
-
-        // 4. NAVBAR (ÜST MENÜ) GÖLGE EFEKTİ
-        // Sayfa en tepedeyken navbarın altı düzdür. 50 pixel aşağı inildiğinde altına siyah bir gölge (boxShadow) atar.
+        // 7. NAVBAR GÖLGE EFEKTİ
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
+            // Sitede en az 50 pixel aşağı inildiyse üst menünün altına siyah bir gölge atar
             if (window.scrollY > 50) {
                 navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
             } else {
