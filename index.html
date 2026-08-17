@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+    Tek dosyalı portfolyo: HTML, CSS ve JavaScript aynı dosyada tutulur.
+    KİİT Satış & Stok Otomasyonu açık kaynak projeler bölümündedir.
+-->
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -200,7 +204,8 @@
         .project-group-heading h3 { font-size: 1.35rem; }
         .project-group-heading p { color: var(--text-muted); max-width: 620px; font-size: 0.95rem; text-align: right; }
         .projects-grid { display: grid; gap: 2rem; }
-        .open-source-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        /* KİİT projesi de açık kaynak olduğu için dört kartı dengeli bir 2x2 düzende gösterir. */
+        .open-source-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .professional-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         /* Profesyonel proje sayısı tek olduğunda son kart boşluk bırakmadan tam satıra yayılır. */
         .professional-grid .project-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
@@ -558,6 +563,30 @@
                     <span data-i18n="tech.imageProcessing">Görüntü İşleme</span> <span>C#</span> <span data-i18n="tech.automation">Otomasyon</span>
                 </div>
             </article>
+
+            <!--
+                KİİT Teknoloji artık açık kaynak projeler arasında yer alıyor.
+                İncele butonu doğrudan GitHub deposundaki kaynak kodlara gider.
+            -->
+            <article class="project-card" tabindex="0" aria-label="KİİT Teknoloji Satış ve Stok Otomasyonu proje detayını aç" data-i18n-aria="aria.kiitCard" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="10">
+                <div class="project-header">
+                    <i class="fa-regular fa-folder"></i>
+                    <div class="project-links">
+                        <a href="https://github.com/brky0z/KiitTeknolojiSatisStokOtomasyonu" target="_blank" rel="noopener noreferrer" title="Kodları GitHub'da incele" data-i18n-title="aria.githubCode">
+                            <i class="fa-brands fa-github"></i><span data-i18n="projects.inspect">İncele</span>
+                        </a>
+                    </div>
+                </div>
+                <h3 data-i18n="project.kiit.title">KİİT Teknoloji Satış & Stok Otomasyonu</h3>
+                <p data-i18n="project.kiit.description">Satış, stok, personel yetkilendirme ve raporlama süreçlerini tek uygulamada yöneten, Windows için geliştirilmiş masaüstü otomasyon sistemi.</p>
+                <div class="project-impact">
+                    <span class="impact-label" data-i18n="projects.impactLabel">Somut katkı</span>
+                    <p data-i18n="project.kiit.impact">Satış tamamlandığında stoğu otomatik günceller; kritik stok, personel hareketleri ve ciro takibini tek bir yönetim akışında birleştirir.</p>
+                </div>
+                <div class="project-tech">
+                    <span>C#</span> <span>.NET 10</span> <span>WPF / XAML</span> <span>SQLite</span>
+                </div>
+            </article>
             </div>
         </div>
 
@@ -629,34 +658,6 @@
                 </div>
                 <div class="project-tech">
                     <span>C#</span> <span>Web Scraping</span> <span data-i18n="tech.desktopApp">Desktop App</span>
-                </div>
-            </article>
-
-            <!--
-                KİİT Teknoloji kartı profesyonel projelerde yer alır.
-                Kaynak kod özel olsa da GitHub bağlantısı proje açıklamalarına
-                ve arayüz görsellerine doğrudan erişim sağlar.
-            -->
-            <article class="project-card" tabindex="0" aria-label="KİİT Teknoloji Satış ve Stok Otomasyonu proje detayını aç" data-i18n-aria="aria.kiitCard" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-max="10">
-                <div class="project-header">
-                    <i class="fa-regular fa-folder"></i>
-                    <div class="project-header-actions">
-                        <span class="project-status"><i class="fa-solid fa-lock"></i><span data-i18n="projects.closedSource">Kapalı Kaynak</span></span>
-                        <div class="project-links">
-                            <a href="https://github.com/brky0z/KiitTeknolojiSatisStokOtomasyonu" target="_blank" rel="noopener noreferrer" title="Proje detaylarını GitHub'da incele" data-i18n-title="aria.githubProject">
-                                <i class="fa-brands fa-github"></i><span data-i18n="projects.inspect">İncele</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <h3 data-i18n="project.kiit.title">KİİT Teknoloji Satış & Stok Otomasyonu</h3>
-                <p data-i18n="project.kiit.description">Satış, stok, personel yetkilendirme ve raporlama süreçlerini tek uygulamada yöneten, Windows için geliştirilmiş masaüstü otomasyon sistemi.</p>
-                <div class="project-impact">
-                    <span class="impact-label" data-i18n="projects.impactLabel">Somut katkı</span>
-                    <p data-i18n="project.kiit.impact">Satış tamamlandığında stoğu otomatik günceller; kritik stok, personel hareketleri ve ciro takibini tek bir yönetim akışında birleştirir.</p>
-                </div>
-                <div class="project-tech">
-                    <span>C#</span> <span>.NET 10</span> <span>WPF / XAML</span> <span>SQLite</span>
                 </div>
             </article>
 
